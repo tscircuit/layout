@@ -1,7 +1,10 @@
 {
   "name": "@tscircuit/layout",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
+  "files": [
+    "dist"
+  ],
   "main": "dist/index.cjs",
   "scripts": {
     "build": "tsup ./index.ts --dts --sourcemap"
