@@ -2,9 +2,9 @@
   "name": "@tscircuit/layout",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.cjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup ./index.ts --dts --sourcemap"
   },
   "keywords": [],
   "author": "",

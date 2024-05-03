@@ -1,12 +1,17 @@
 import {
-  AnySoupElement,
-  BuildContext,
-  PCBComponent,
-  SourceComponent,
+  type AnySoupElement,
+  type BuildContext,
+  type PCBComponent,
+  type SourceComponent,
   applySelector,
   transformPCBElements,
 } from "@tscircuit/builder"
-import { Matrix, compose, identity, translate } from "transformation-matrix"
+import {
+  type Matrix,
+  compose,
+  identity,
+  translate,
+} from "transformation-matrix"
 
 export const manualLayoutPcb = (
   elements: AnySoupElement[],
@@ -55,7 +60,10 @@ export const manualLayoutPcb = (
 
     let mat: Matrix = identity()
     if (relative_to === "group_center") {
-      const new_center = bc.convert(pcb_position.center)
+      const new_center = bc.convert(pcb_position.center) as unknown as {
+        x: number
+        y: number
+      }
       mat = compose(
         translate(-pcb_component.center.x, -pcb_component.center.y),
         translate(new_center.x, new_center.y)

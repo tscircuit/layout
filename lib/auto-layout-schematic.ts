@@ -1,4 +1,4 @@
-import { AnySoupElement } from "@tscircuit/builder"
+import type { AnySoupElement } from "@tscircuit/builder"
 import * as AutoSch from "@tscircuit/schematic-autolayout"
 
 export const autoLayoutSchematic = (soup: AnySoupElement[]) => {
