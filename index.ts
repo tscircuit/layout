@@ -1,10 +1,13 @@
-import type {
-  AnySoupElement,
-  BuildContext,
-  ManualPcbPosition,
+import {
+  manual_pcb_position,
+  type AnySoupElement,
+  type BuildContext,
+  type ManualPcbPosition,
+  type ManualPcbPositionInput,
 } from "@tscircuit/builder"
 import { manualLayoutPcb } from "./lib/manual-layout-pcb"
 import { autoLayoutSchematic } from "./lib/auto-layout-schematic"
+import { z } from "zod"
 
 export {
   manualLayoutPcb as internalManualLayoutPcb,
@@ -19,7 +22,7 @@ export interface MinimalLayoutBuilder {
 export interface LayoutBuilder {
   autoLayoutSchematic: (opts?: { padding?: number }) => this
 
-  manualPcbPlacement: (positions: ManualPcbPosition[]) => this
+  manualPcbPlacement: (positions: ManualPcbPositionInput[]) => this
 
   extend: <const T extends MinimalLayoutBuilder>(
     ext: T
@@ -53,7 +56,9 @@ export const layout = () => {
     },
     manualPcbPlacement(positions) {
       this.manual_pcb_placement_enabled = true
-      this.manual_pcb_placement_config = { positions }
+      this.manual_pcb_placement_config = {
+        positions: z.array(manual_pcb_position).parse(positions),
+      }
       return this
     },
     applyToSoup(soup, bc) {
