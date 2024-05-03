@@ -1,11 +1,11 @@
 {
   "name": "@tscircuit/layout",
-  "version": "0.0.4",
-  "description": "",
+  "version": "0.0.5",
+  "description": "Customize tscircuit schematic and pcb layouts",
   "files": [
     "dist"
   ],
-  "main": "dist/index.cjs",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsup ./index.ts --dts --sourcemap"
   },

@@ -4,7 +4,7 @@
 
 [![npm version](https://badge.fury.io/js/@tscircuit/layout.svg)](https://www.npmjs.com/package/@tscircuit/layout)
 
-This package defines the main API for the layout builder for tscircuit.
+Customize schematic and PCB layout algorithms for tscircuit.
 
 ```tsx
 import { layout } from "@tscircuit/layout" // or "tscircuit"
