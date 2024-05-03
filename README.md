@@ -1,7 +1,8 @@
 # @tscircuit/layout
 
-> [!NOTE]
-> This package is in early development and is not yet ready for use.
+[Main `tscircuit` package](https://github.com/tscircuit/tscircuit) | [tscircuit.com](https://tscircuit.com) | [tscircuit docs](https://docs.tscircuit.com/)
+
+[![npm version](https://badge.fury.io/js/@tscircuit/layout.svg)](https://www.npmjs.com/package/@tscircuit/layout)
 
 This package defines the main API for the layout builder for tscircuit.
 
@@ -85,10 +86,16 @@ can easily implement the APIs or load in custom plugins to extend the capabiliti
 Over time dominant patterns will emerge and an optimized data-attribute system
 can be built.
 
+## Limitations
+
+This is a _synchronous_ layout builder. Many complex designs will require
+computationally intensive asynchronous layout solvers. For those layouts, you
+can use a [baker](https://github.com/tscircuit/tscircuit/issues/108).
+
+Synchronous layout builders are extremely useful because they give realtime
+feedback and can form the "starting conditions" of a large bake. Moreover, for
+95% of circuits that are "good enough" without baking.
+
 ## References
 
 1. [Original Feature Request](https://github.com/tscircuit/tscircuit/issues/107)
-
-```
-
-```

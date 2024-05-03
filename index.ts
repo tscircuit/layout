@@ -1,4 +1,11 @@
-import type { AnySoupElement } from "@tscircuit/builder"
+import type { AnySoupElement, BuildContext } from "@tscircuit/builder"
+import { manualLayoutPcb } from "./lib/manual-layout-pcb"
+import { autoLayoutSchematic } from "./lib/auto-layout-schematic"
+
+export {
+  manualLayoutPcb as internalManualLayoutPcb,
+  autoLayoutSchematic as internalAutoLayoutSchematic,
+}
 
 export interface MinimalLayoutBuilder {
   name: string
@@ -6,7 +13,7 @@ export interface MinimalLayoutBuilder {
 }
 
 export interface LayoutBuilder {
-  autoLayoutSchematic: () => this
+  autoLayoutSchematic: (opts?: { padding?: number }) => this
 
   manualPcbPlacement: (
     positions: { selector: string; x: number; y: number }[]
@@ -16,23 +23,44 @@ export interface LayoutBuilder {
     ext: T
   ) => this & Omit<T, "applyToSoup">
 
-  applyToSoup: (soup: AnySoupElement[]) => AnySoupElement[]
+  applyToSoup: (soup: AnySoupElement[], bc: BuildContext) => AnySoupElement[]
 }
 
 interface InternalLayoutBuilderProps {
+  // ---- PCB ----
   manual_pcb_placement_enabled: boolean
+  manual_pcb_placement_config?: {
+    positions: { selector: string; x: number; y: number }[]
+  }
+
+  // ---- Schematic ----
   auto_layout_schematic_enabled: boolean
+  auto_layout_schematic_config?: {
+    padding?: number | string
+  }
 }
 
 export const layout = () => {
   const layoutBuilder: LayoutBuilder = {
     manual_pcb_placement_enabled: false,
     auto_layout_schematic_enabled: false,
-    autoLayoutSchematic() {},
-    manualPcbPlacement(positions) {
-      this.middlewares.push()
+    autoLayoutSchematic(opts) {
+      this.auto_layout_schematic_enabled = true
+      this.auto_layout_schematic_config = opts
+      return this
     },
-    applyToSoup(soup) {
+    manualPcbPlacement(positions) {
+      this.manual_pcb_placement_enabled = true
+      this.manual_pcb_placement_config = { positions }
+      return this
+    },
+    applyToSoup(soup, bc) {
+      if (this.auto_layout_schematic_enabled) {
+        // apply auto layout schematic
+      }
+      if (this.manual_pcb_placement_enabled) {
+        manualLayoutPcb(soup, this.manual_pcb_placement_config!.positions, bc)
+      }
       return soup
     },
   } as Partial<LayoutBuilder> & InternalLayoutBuilderProps as LayoutBuilder
@@ -41,8 +69,8 @@ export const layout = () => {
     ...layoutBuilder,
     ...ext,
     name: undefined,
-    applyToSoup: (soup) => {
-      return ext.applyToSoup(layoutBuilder.applyToSoup(soup))
+    applyToSoup: (soup, bc) => {
+      return ext.applyToSoup(layoutBuilder.applyToSoup(soup, bc))
     },
   })
 
