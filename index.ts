@@ -8,7 +8,7 @@ export interface MinimalLayoutBuilder {
 export interface LayoutBuilder {
   autoLayoutSchematic: () => this
 
-  manualPcbPositions: (
+  manualPcbPlacement: (
     positions: { selector: string; x: number; y: number }[]
   ) => this
 
@@ -19,17 +19,23 @@ export interface LayoutBuilder {
   applyToSoup: (soup: AnySoupElement[]) => AnySoupElement[]
 }
 
+interface InternalLayoutBuilderProps {
+  manual_pcb_placement_enabled: boolean
+  auto_layout_schematic_enabled: boolean
+}
+
 export const layout = () => {
-  const layoutBuilder: LayoutBuilder = {} as any
-
-  // TODO
-  layoutBuilder.autoLayoutSchematic = () => layoutBuilder
-
-  // TODO
-  layoutBuilder.manualPcbPositions = (positions) => layoutBuilder
-
-  // TODO
-  layoutBuilder.applyToSoup = (soup) => soup
+  const layoutBuilder: LayoutBuilder = {
+    manual_pcb_placement_enabled: false,
+    auto_layout_schematic_enabled: false,
+    autoLayoutSchematic() {},
+    manualPcbPlacement(positions) {
+      this.middlewares.push()
+    },
+    applyToSoup(soup) {
+      return soup
+    },
+  } as Partial<LayoutBuilder> & InternalLayoutBuilderProps as LayoutBuilder
 
   layoutBuilder.extend = (ext) => ({
     ...layoutBuilder,

@@ -51,6 +51,27 @@ export const MyCircuit = () => (
 
 ```
 
+## Changing the layout builder defaults
+
+The recommended way to do this is to create a new layout builder in your project
+with the defaults configured like so:
+
+```tsx
+// lib/layout.ts
+import { layout as builtinLayout } from "@tscircuit/layout"
+
+export const layout = () =>
+  builtinLayout().auto_layout_schematic({ padding: 2 })
+```
+
+```tsx
+// lib/MyCircuit.tsx
+
+import { layout } from "lib/layout"
+
+export const MyCircuit = () => <group layout={layout()}>{/* ... */}</group>
+```
+
 ## Motivation
 
 In web development, there is a robust flexbox/grid system that has been developed
@@ -67,3 +88,7 @@ can be built.
 ## References
 
 1. [Original Feature Request](https://github.com/tscircuit/tscircuit/issues/107)
+
+```
+
+```
