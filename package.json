@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tscircuit/builder": "^1.5.81",
     "esbuild": "^0.20.2",
-    "tsup": "^8.0.2"
+    "tsup": "^8.0.2",
+    "zod": "^3.23.6"
   }
 }
