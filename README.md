@@ -19,7 +19,37 @@ export const MyCircuit = () => (
 
 ## Extending the Layout Builder
 
-WIP
+> [!NOTE]
+> Soup is a JSON data format that represents the components of a circuit. [Learn more](https://docs.tscircuit.com/api-reference/advanced/soup)
+
+The layout builder is designed to be extensible. You can add new layout mechanism
+like this:
+
+```tsx
+import { layout } from "@tscircuit/layout"
+
+const customLayout = layout().extend({
+  name: "Move to Layer",
+  setLayer(layer: string) {
+    this.layer = layer
+    return this
+  },
+  applyToSoup(soup) {
+    return soup.map((component) => {
+      if ("layer" in component) {
+        component.layer = this.layer
+      }
+    }
+  }
+})
+
+export const MyCircuit = () => (
+  <group layout={customLayout.setLayer("top")}>
+   {/* ... */}
+  </group>
+)
+
+```
 
 ## Motivation
 
