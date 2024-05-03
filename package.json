@@ -1,6 +1,6 @@
 {
   "name": "@tscircuit/layout",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Customize tscircuit schematic and pcb layouts",
   "files": [
     "dist"

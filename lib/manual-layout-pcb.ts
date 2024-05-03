@@ -65,7 +65,10 @@ export const manualLayoutPcb = (
         y: number
       }
       mat = compose(
-        translate(-pcb_component.center.x, -pcb_component.center.y),
+        translate(
+          -(pcb_component.center?.x ?? 0),
+          -(pcb_component.center?.y ?? 0)
+        ),
         translate(new_center.x, new_center.y)
       )
     } else {

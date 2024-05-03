@@ -1,4 +1,8 @@
-import type { AnySoupElement, BuildContext } from "@tscircuit/builder"
+import type {
+  AnySoupElement,
+  BuildContext,
+  ManualPcbPosition,
+} from "@tscircuit/builder"
 import { manualLayoutPcb } from "./lib/manual-layout-pcb"
 import { autoLayoutSchematic } from "./lib/auto-layout-schematic"
 
@@ -15,9 +19,7 @@ export interface MinimalLayoutBuilder {
 export interface LayoutBuilder {
   autoLayoutSchematic: (opts?: { padding?: number }) => this
 
-  manualPcbPlacement: (
-    positions: { selector: string; x: number; y: number }[]
-  ) => this
+  manualPcbPlacement: (positions: ManualPcbPosition[]) => this
 
   extend: <const T extends MinimalLayoutBuilder>(
     ext: T
@@ -30,7 +32,7 @@ interface InternalLayoutBuilderProps {
   // ---- PCB ----
   manual_pcb_placement_enabled: boolean
   manual_pcb_placement_config?: {
-    positions: { selector: string; x: number; y: number }[]
+    positions: ManualPcbPosition[]
   }
 
   // ---- Schematic ----
