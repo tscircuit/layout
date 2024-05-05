@@ -1,6 +1,6 @@
 {
   "name": "@tscircuit/layout",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Customize tscircuit schematic and pcb layouts",
   "files": [
     "dist"
@@ -19,7 +19,6 @@
     "zod": "^3.23.6"
   },
   "peerDependencies": {
-    "@tscircuit/builder": "*",
     "zod": "*"
   },
   "dependencies": {
