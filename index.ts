@@ -24,6 +24,8 @@ export interface LayoutBuilder {
 
   manualPcbPlacement: (positions: ManualPcbPositionInput[]) => this
 
+  manualEdits: (edits: any) => this
+
   extend: <const T extends MinimalLayoutBuilder>(
     ext: T
   ) => this & Omit<T, "applyToSoup">
@@ -58,6 +60,12 @@ export const layout = () => {
       this.manual_pcb_placement_enabled = true
       this.manual_pcb_placement_config = {
         positions: z.array(manual_pcb_position).parse(positions),
+      }
+      return this
+    },
+    manualEdits(edits) {
+      if (edits.pcb_placements || edits.pcb_positions) {
+        this.manualPcbPlacement?.(edits.pcb_placements || edits.pcb_positions)
       }
       return this
     },
