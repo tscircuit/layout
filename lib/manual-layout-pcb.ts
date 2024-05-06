@@ -1,11 +1,13 @@
 import {
-  type AnySoupElement,
-  type BuildContext,
-  type PCBComponent,
-  type SourceComponent,
   applySelector,
   transformPCBElements,
+  type BuildContext,
 } from "@tscircuit/builder"
+import type {
+  AnySoupElement,
+  PCBComponent,
+  AnySourceComponent,
+} from "@tscircuit/soup"
 import {
   type Matrix,
   compose,
@@ -19,7 +21,10 @@ export const manualLayoutPcb = (
   bc: BuildContext
 ) => {
   for (const pcb_position of positions) {
-    const selector_matches = applySelector(elements, pcb_position.selector)
+    const selector_matches = applySelector(
+      elements as any,
+      pcb_position.selector
+    )
     if (selector_matches.length === 0) {
       elements.push({
         pcb_error_id: bc.getId("pcb_error"),
@@ -39,7 +44,7 @@ export const manualLayoutPcb = (
       continue
     }
 
-    const source_component = selector_matches[0] as SourceComponent
+    const source_component = selector_matches[0] as AnySourceComponent
     const pcb_component = elements.find(
       (e) =>
         e.type === "pcb_component" &&
@@ -82,7 +87,7 @@ export const manualLayoutPcb = (
         (e) =>
           "pcb_component_id" in e &&
           e.pcb_component_id === pcb_component.pcb_component_id
-      ),
+      ) as any,
       mat
     )
   }

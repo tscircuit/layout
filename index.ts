@@ -66,7 +66,11 @@ export const layout = () => {
         // apply auto layout schematic
       }
       if (this.manual_pcb_placement_enabled) {
-        manualLayoutPcb(soup, this.manual_pcb_placement_config!.positions, bc)
+        manualLayoutPcb(
+          soup as any,
+          this.manual_pcb_placement_config!.positions,
+          bc
+        )
       }
       return soup
     },
