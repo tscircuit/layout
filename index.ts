@@ -1,30 +1,33 @@
+import { addManualTraceHints } from "./lib/add-manual-trace-hints"
 import {
   manual_pcb_position,
-  type AnySoupElement,
   type BuildContext,
   type ManualPcbPosition,
   type ManualPcbPositionInput,
 } from "@tscircuit/builder"
+import type { PcbRouteHint, AnySoupElement } from "@tscircuit/soup"
 import { manualLayoutPcb } from "./lib/manual-layout-pcb"
 import { autoLayoutSchematic } from "./lib/auto-layout-schematic"
 import { z } from "zod"
+import type {
+  ManualEditFile,
+  ManualTraceHint,
+  MinimalLayoutBuilder,
+} from "./lib/types"
 
 export {
   manualLayoutPcb as internalManualLayoutPcb,
   autoLayoutSchematic as internalAutoLayoutSchematic,
 }
 
-export interface MinimalLayoutBuilder {
-  name: string
-  applyToSoup: (soup: AnySoupElement[]) => AnySoupElement[]
-}
+export type { ManualEditFile, ManualTraceHint }
 
 export interface LayoutBuilder {
   autoLayoutSchematic: (opts?: { padding?: number }) => this
 
   manualPcbPlacement: (positions: ManualPcbPositionInput[]) => this
 
-  manualEdits: (edits: any) => this
+  manualEdits: (edits: ManualEditFile) => this
 
   extend: <const T extends MinimalLayoutBuilder>(
     ext: T
@@ -45,12 +48,15 @@ interface InternalLayoutBuilderProps {
   auto_layout_schematic_config?: {
     padding?: number | string
   }
+
+  manual_trace_hints: ManualTraceHint[]
 }
 
 export const layout = () => {
   const layoutBuilder: LayoutBuilder = {
     manual_pcb_placement_enabled: false,
     auto_layout_schematic_enabled: false,
+    manual_trace_hints: [],
     autoLayoutSchematic(opts) {
       this.auto_layout_schematic_enabled = true
       this.auto_layout_schematic_config = opts
@@ -64,8 +70,13 @@ export const layout = () => {
       return this
     },
     manualEdits(edits) {
-      if (edits.pcb_placements || edits.pcb_positions) {
-        this.manualPcbPlacement?.(edits.pcb_placements || edits.pcb_positions)
+      if (edits.pcb_placements || (edits as any).pcb_positions) {
+        this.manualPcbPlacement?.(
+          edits.pcb_placements || (edits as any).pcb_positions
+        )
+      }
+      if (edits.manual_trace_hints) {
+        this.manual_trace_hints = edits.manual_trace_hints
       }
       return this
     },
@@ -79,6 +90,9 @@ export const layout = () => {
           this.manual_pcb_placement_config!.positions,
           bc
         )
+      }
+      if (this.manual_trace_hints) {
+        soup = addManualTraceHints(soup, this.manual_trace_hints, bc)
       }
       return soup
     },
