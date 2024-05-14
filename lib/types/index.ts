@@ -13,5 +13,5 @@ export interface ManualTraceHint {
 
 export interface ManualEditFile {
   pcb_placements?: ManualPcbPositionInput[]
-  manual_trace_hints: ManualTraceHint[]
+  manual_trace_hints?: ManualTraceHint[]
 }
