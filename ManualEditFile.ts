@@ -1,5 +1,5 @@
 import { type ManualPcbPositionInput } from "@tscircuit/builder"
-import { ManualTraceHint } from "."
+import type { ManualTraceHint } from "."
 
 export interface ManualEditFile {
   pcb_placements?: ManualPcbPositionInput[]
