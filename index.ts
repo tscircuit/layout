@@ -83,6 +83,7 @@ export const layout = () => {
     applyToSoup(soup, bc) {
       if (this.auto_layout_schematic_enabled) {
         // apply auto layout schematic
+        autoLayoutSchematic(soup, this.auto_layout_schematic_config, bc)
       }
       if (this.manual_pcb_placement_enabled) {
         manualLayoutPcb(

@@ -17,7 +17,11 @@ export const getSourcePortsInRoute = (
   return source_ports_in_route
 }
 
-export const autoLayoutSchematic = (soup: AnySoupElement[]) => {
+export const autoLayoutSchematic = (
+  soup: AnySoupElement[],
+  config: any,
+  bc: any
+) => {
   const scene = AutoSch.convertSoupToScene(soup as any)
 
   // We have to manually add the connections in a simple way to avoid
