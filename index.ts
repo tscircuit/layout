@@ -14,6 +14,8 @@ import type {
   ManualTraceHint,
   MinimalLayoutBuilder,
 } from "./lib/types"
+import type { EditEvent } from "@tscircuit/manual-edit-events"
+import { applyEditEvents } from "lib/apply-edit-events"
 
 export {
   manualLayoutPcb as internalManualLayoutPcb,
@@ -50,6 +52,8 @@ interface InternalLayoutBuilderProps {
   }
 
   manual_trace_hints: ManualTraceHint[]
+
+  edit_events: EditEvent[]
 }
 
 export const layout = () => {
@@ -57,6 +61,7 @@ export const layout = () => {
     manual_pcb_placement_enabled: false,
     auto_layout_schematic_enabled: false,
     manual_trace_hints: [],
+    edit_events: [],
     autoLayoutSchematic(opts) {
       this.auto_layout_schematic_enabled = true
       this.auto_layout_schematic_config = opts
@@ -94,6 +99,9 @@ export const layout = () => {
       }
       if (this.manual_trace_hints) {
         soup = addManualTraceHints(soup, this.manual_trace_hints, bc)
+      }
+      if (this.edit_events) {
+        soup = applyEditEvents(soup, this.edit_events, bc)
       }
       return soup
     },

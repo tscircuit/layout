@@ -1,5 +1,6 @@
 import type { PcbRouteHint, AnySoupElement } from "@tscircuit/soup"
 import { type ManualPcbPositionInput } from "@tscircuit/builder"
+import { type EditEvent } from "@tscircuit/manual-edit-events"
 
 export interface MinimalLayoutBuilder {
   name: string
@@ -14,4 +15,5 @@ export interface ManualTraceHint {
 export interface ManualEditFile {
   pcb_placements?: ManualPcbPositionInput[]
   manual_trace_hints?: ManualTraceHint[]
+  edit_events?: EditEvent[]
 }
