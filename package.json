@@ -1,6 +1,6 @@
 {
   "name": "@tscircuit/layout",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "type": "module",
   "description": "Customize tscircuit schematic and pcb layouts",
   "files": [
