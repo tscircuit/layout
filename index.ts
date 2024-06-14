@@ -101,7 +101,7 @@ export const layout = () => {
         soup = addManualTraceHints(soup, this.manual_trace_hints, bc)
       }
       if (this.edit_events) {
-        soup = applyEditEvents(soup, this.edit_events, bc)
+        applyEditEvents(soup, this.edit_events, bc)
       }
       return soup
     },
