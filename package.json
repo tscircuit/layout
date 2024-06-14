@@ -6,7 +6,7 @@
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsup ./index.ts --dts --sourcemap"
