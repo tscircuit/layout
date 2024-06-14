@@ -15,5 +15,10 @@ export interface ManualTraceHint {
 export interface ManualEditFile {
   pcb_placements?: ManualPcbPositionInput[]
   manual_trace_hints?: ManualTraceHint[]
+
+  /**
+   * @deprecated edit events use ids instead of selectors so
+   * aren't safe
+   */
   edit_events?: EditEvent[]
 }

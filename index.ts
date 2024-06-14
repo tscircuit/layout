@@ -17,6 +17,9 @@ import type {
 import type { EditEvent } from "@tscircuit/manual-edit-events"
 import { applyEditEvents } from "lib/apply-edit-events"
 
+export * from "./lib/derive-selector-from-pcb-port-id"
+export * from "./lib/get-manual-trace-hint-from-event"
+
 export {
   manualLayoutPcb as internalManualLayoutPcb,
   autoLayoutSchematic as internalAutoLayoutSchematic,
