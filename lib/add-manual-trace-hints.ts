@@ -10,9 +10,7 @@ export const addManualTraceHints = (
 ) => {
   // Add trace hints
   for (const hint of manual_trace_hints) {
-    const pcb_port = su(soup as any).pcb_trace_hint.select(
-      hint.pcb_port_selector
-    )
+    const pcb_port = su(soup as any).pcb_port.select(hint.pcb_port_selector)
 
     if (!pcb_port) {
       // TODO add pcb_error, indicate unused manual edit
@@ -27,6 +25,7 @@ export const addManualTraceHints = (
     // Create the trace hint
     const trace_hint: PcbTraceHint = {
       type: "pcb_trace_hint",
+      pcb_trace_hint_id: bc.getId("pcb_trace_hint"),
       pcb_component_id: pcb_port.pcb_component_id,
       pcb_port_id: pcb_port.pcb_port_id,
       route: hint.offsets.map((offset) => ({
