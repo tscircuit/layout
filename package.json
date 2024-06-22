@@ -22,15 +22,19 @@
     "esbuild-register": "^3.5.0",
     "tsup": "^8.0.2",
     "zod": "^3.23.8",
-    "@tscircuit/schematic-autolayout": "^0.0.5"
+    "@tscircuit/schematic-autolayout": "^0.0.5",
+    "@tscircuit/soup": "^0.0.33",
+    "@tscircuit/soup-util": "^0.0.11"
   },
   "peerDependencies": {
     "zod": "*",
+    "@tscircuit/builder": "*",
+    "@tscircuit/soup": "*",
+    "@tscircuit/soup-util": "*",
+    "@tscircuit/manual-edit-events": "*",
     "@tscircuit/schematic-autolayout": "*"
   },
   "dependencies": {
-    "@tscircuit/soup": "^0.0.33",
-    "@tscircuit/soup-util": "^0.0.11",
     "transformation-matrix": "^2.16.1"
   }
 }
