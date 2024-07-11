@@ -1,5 +1,5 @@
 import type { PcbRouteHint, AnySoupElement } from "@tscircuit/soup"
-import { type ManualPcbPositionInput } from "@tscircuit/builder"
+import { type ManualPcbPositionInput } from "lib/zod"
 import { type EditEvent } from "@tscircuit/manual-edit-events"
 
 export interface MinimalLayoutBuilder {
