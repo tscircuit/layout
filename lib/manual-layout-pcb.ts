@@ -1,13 +1,10 @@
-import {
-  applySelector,
-  transformPCBElements,
-  type BuildContext,
-} from "@tscircuit/builder"
+import { applySelector, transformPCBElements } from "@tscircuit/soup-util"
 import type {
   AnySoupElement,
   PCBComponent,
   AnySourceComponent,
 } from "@tscircuit/soup"
+import type { BuildContext } from "@tscircuit/builder"
 import {
   type Matrix,
   compose,
