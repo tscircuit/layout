@@ -27,20 +27,6 @@ export {
 
 export type { ManualEditFile, ManualTraceHint }
 
-export interface LayoutBuilder {
-  autoLayoutSchematic: (opts?: { padding?: number }) => this
-
-  manualPcbPlacement: (positions: ManualPcbPositionInput[]) => this
-
-  manualEdits: (edits: ManualEditFile) => this
-
-  extend: <const T extends MinimalLayoutBuilder>(
-    ext: T
-  ) => this & Omit<T, "applyToSoup">
-
-  applyToSoup: (soup: AnySoupElement[], bc: BuildContext) => AnySoupElement[]
-}
-
 interface InternalLayoutBuilderProps {
   // ---- PCB ----
   manual_pcb_placement_enabled: boolean
@@ -57,6 +43,20 @@ interface InternalLayoutBuilderProps {
   manual_trace_hints: ManualTraceHint[]
 
   edit_events: EditEvent[]
+}
+
+export interface LayoutBuilder extends InternalLayoutBuilderProps {
+  autoLayoutSchematic: (opts?: { padding?: number }) => this
+
+  manualPcbPlacement: (positions: ManualPcbPositionInput[]) => this
+
+  manualEdits: (edits: ManualEditFile) => this
+
+  extend: <const T extends MinimalLayoutBuilder>(
+    ext: T
+  ) => this & Omit<T, "applyToSoup">
+
+  applyToSoup: (soup: AnySoupElement[], bc: BuildContext) => AnySoupElement[]
 }
 
 export const layout = () => {
