@@ -1,8 +1,8 @@
 import { addManualTraceHints } from "./lib/add-manual-trace-hints"
-import {
-  type BuildContext,
-  type ManualPcbPosition,
-  type ManualPcbPositionInput,
+import type {
+  BuildContext,
+  ManualPcbPosition,
+  ManualPcbPositionInput,
 } from "@tscircuit/builder"
 import { manual_pcb_position } from "./lib/zod"
 import type { PcbRouteHint, AnySoupElement } from "@tscircuit/soup"

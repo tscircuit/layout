@@ -10,7 +10,7 @@
   "scripts": {
     "test": "ava",
     "prepublish": "npm run build",
-    "build": "tsup ./index.ts --dts --sourcemap"
+    "build": "tsup-node ./index.ts --dts --sourcemap"
   },
   "keywords": [],
   "author": "",
@@ -20,12 +20,10 @@
     "@tscircuit/manual-edit-events": "^0.0.3",
     "@tscircuit/schematic-autolayout": "^0.0.5",
     "@tscircuit/soup": "^0.0.39",
-    "@tscircuit/soup-util": "^0.0.13",
     "ava": "^6.1.3",
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
-    "tsup": "^8.0.2",
-    "zod": "^3.23.8"
+    "tsup": "^8.0.2"
   },
   "peerDependencies": {
     "@tscircuit/manual-edit-events": "*",
@@ -35,6 +33,8 @@
     "zod": "*"
   },
   "dependencies": {
-    "transformation-matrix": "^2.16.1"
+    "transformation-matrix": "^2.16.1",
+    "zod": "^3.23.8",
+    "@tscircuit/soup-util": "^0.0.13"
   }
 }
