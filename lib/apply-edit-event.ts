@@ -14,6 +14,7 @@ export const applyEditEvent = (
     const { route, pcb_trace_hint_id, pcb_port_id } = editEvent
 
     const traceHint: PcbTraceHint = {
+      pcb_trace_hint_id: pcb_trace_hint_id ?? bc.getId("pcb_trace_hint"),
       type: "pcb_trace_hint",
       pcb_port_id,
       pcb_component_id: su(soup).pcb_component.getUsing({ pcb_port_id })
