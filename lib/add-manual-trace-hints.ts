@@ -1,12 +1,11 @@
 import type { AnySoupElement, PcbTraceHint } from "@tscircuit/soup"
 import type { ManualTraceHint } from "./types"
-import type { BuildContext } from "@tscircuit/builder"
 import { su } from "@tscircuit/soup-util"
 
 export const addManualTraceHints = (
   soup: AnySoupElement[],
   manual_trace_hints: ManualTraceHint[],
-  bc: BuildContext
+  bc: any
 ) => {
   // Add trace hints
   for (const hint of manual_trace_hints) {

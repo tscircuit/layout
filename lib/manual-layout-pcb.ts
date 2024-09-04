@@ -4,7 +4,6 @@ import type {
   PCBComponent,
   AnySourceComponent,
 } from "@tscircuit/soup"
-import type { BuildContext } from "@tscircuit/builder"
 import {
   type Matrix,
   compose,
@@ -15,7 +14,7 @@ import {
 export const manualLayoutPcb = (
   elements: AnySoupElement[],
   positions: any[],
-  bc: BuildContext
+  bc: any
 ) => {
   for (const pcb_position of positions) {
     const selector_matches = applySelector(

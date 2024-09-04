@@ -1,10 +1,5 @@
 import { addManualTraceHints } from "./lib/add-manual-trace-hints"
-import type {
-  BuildContext,
-  ManualPcbPosition,
-  ManualPcbPositionInput,
-} from "@tscircuit/builder"
-import { manual_pcb_position } from "./lib/zod"
+import { manual_pcb_position, type ManualPcbPosition } from "./lib/zod"
 import type { PcbRouteHint, AnySoupElement } from "@tscircuit/soup"
 import { manualLayoutPcb } from "./lib/manual-layout-pcb"
 import { autoLayoutSchematic } from "./lib/auto-layout-schematic"
@@ -22,10 +17,9 @@ export * from "./lib/get-manual-trace-hint-from-event"
 
 export {
   manualLayoutPcb as internalManualLayoutPcb,
-  autoLayoutSchematic as internalAutoLayoutSchematic,
+  autoLayoutSchematic as internalAutoLayoutSchematic
 }
-
-export type { ManualEditFile, ManualTraceHint }
+export type { ManualEditFile, ManualTraceHint, ManualPcbPosition }
 
 interface InternalLayoutBuilderProps {
   // ---- PCB ----

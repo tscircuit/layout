@@ -1,4 +1,3 @@
-import type { BuildContext } from "@tscircuit/builder"
 import type { EditEvent } from "@tscircuit/manual-edit-events"
 import type { AnySoupElement, PcbTraceHint } from "@tscircuit/soup"
 import { su } from "@tscircuit/soup-util"
@@ -6,7 +5,7 @@ import { su } from "@tscircuit/soup-util"
 export const applyEditEvent = (
   soup: AnySoupElement[],
   editEvent: EditEvent,
-  bc: BuildContext
+  bc: any
 ) => {
   if (editEvent.pcb_edit_event_type === "edit_component_location") {
     // TODO

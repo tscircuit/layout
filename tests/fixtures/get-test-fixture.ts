@@ -1,4 +1,3 @@
-import { createProjectBuilder } from "@tscircuit/builder"
 import type { AnySoupElement } from "@tscircuit/soup"
 import type { ExecutionContext } from "ava"
 // import { logLayout } from "tests/utils/log-layout"
@@ -7,7 +6,7 @@ import type { ExecutionContext } from "ava"
 export const getTestFixture = (t: ExecutionContext) => {
   return {
     render: (elms: any): Promise<AnySoupElement[]> => {
-      const pb = createProjectBuilder()
+      // const pb = createProjectBuilder()
 
       // return createRoot().render(elms, pb) as any as Promise<AnySoupElement[]>
       return null as any
