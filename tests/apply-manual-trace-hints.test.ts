@@ -1,6 +1,4 @@
 import type { AnyCircuitElement } from "circuit-json"
-import { any_soup_element } from "circuit-json"
-import { z } from "zod"
 import { su } from "@tscircuit/soup-util"
 import test from "ava"
 import { addManualTraceHints } from "lib/add-manual-trace-hints"

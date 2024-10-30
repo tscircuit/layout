@@ -32,7 +32,7 @@
     "zod": "*"
   },
   "dependencies": {
-    "@tscircuit/soup-util": "*",
+    "@tscircuit/soup-util": "^0.0.38",
     "transformation-matrix": "^2.16.1",
     "zod": "*"
   }
