@@ -1,10 +1,10 @@
-import type { PcbRouteHint, AnySoupElement } from "@tscircuit/soup"
+import type { PcbRouteHint, AnyCircuitElement } from "circuit-json"
 import { type ManualPcbPositionInput } from "lib/zod"
 import { type EditEvent } from "@tscircuit/manual-edit-events"
 
 export interface MinimalLayoutBuilder {
   name: string
-  applyToSoup: (soup: AnySoupElement[]) => AnySoupElement[]
+  applyToSoup: (soup: AnyCircuitElement[]) => AnyCircuitElement[]
 }
 
 export interface ManualTraceHint {

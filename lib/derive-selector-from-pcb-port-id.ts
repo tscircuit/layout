@@ -1,11 +1,11 @@
-import type { AnySoupElement } from "@tscircuit/soup"
+import type { AnyCircuitElement } from "circuit-json"
 import { su } from "@tscircuit/soup-util"
 
 export const deriveSelectorFromPcbPortId = ({
   soup,
   pcb_port_id,
 }: {
-  soup: AnySoupElement[]
+  soup: AnyCircuitElement[]
   pcb_port_id: string
 }) => {
   const pcb_component = su(soup as any).pcb_port.getUsing({

@@ -1,13 +1,13 @@
 import type { EditEvent } from "@tscircuit/manual-edit-events"
 import type { ManualTraceHint } from "./types"
 import { deriveSelectorFromPcbPortId } from "./derive-selector-from-pcb-port-id"
-import type { AnySoupElement } from "@tscircuit/soup"
+import type { AnyCircuitElement } from "circuit-json"
 
 /**
  * Get the manual trace hint from an edit event
  */
 export const getManualTraceHintFromEvent = (
-  soup: AnySoupElement[],
+  soup: AnyCircuitElement[],
   editEvent: EditEvent
 ): ManualTraceHint => {
   if (editEvent.pcb_edit_event_type !== "edit_trace_hint") {

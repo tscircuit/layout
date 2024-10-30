@@ -1,11 +1,11 @@
-import type { AnySoupElement } from "@tscircuit/soup"
-import { any_soup_element } from "@tscircuit/soup"
+import type { AnyCircuitElement } from "circuit-json"
+import { any_soup_element } from "circuit-json"
 import { z } from "zod"
 import { su } from "@tscircuit/soup-util"
 import test from "ava"
 import { addManualTraceHints } from "lib/add-manual-trace-hints"
 
-export const twoResistorSoup: AnySoupElement[] = [
+export const twoResistorSoup: AnyCircuitElement[] = [
   {
     type: "source_component",
     source_component_id: "simple_resistor_0",

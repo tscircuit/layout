@@ -1,11 +1,11 @@
-import type { AnySoupElement, SourcePort, SourceTrace } from "@tscircuit/soup"
+import type { AnyCircuitElement, SourcePort, SourceTrace } from "circuit-json"
 import * as AutoSch from "@tscircuit/schematic-autolayout"
 import { pairs } from "./utils/pairs"
 import { su } from "@tscircuit/soup-util"
 
 export const getSourcePortsInRoute = (
   trc: SourceTrace,
-  soup: AnySoupElement[]
+  soup: AnyCircuitElement[]
 ): SourcePort[] => {
   const source_ports_in_route = []
   for (const source_port_id of trc.connected_source_port_ids) {
@@ -18,7 +18,7 @@ export const getSourcePortsInRoute = (
 }
 
 export const autoLayoutSchematic = (
-  soup: AnySoupElement[],
+  soup: AnyCircuitElement[],
   config: any,
   bc: any
 ) => {

@@ -18,8 +18,8 @@
   "devDependencies": {
     "@tscircuit/manual-edit-events": "^0.0.3",
     "@tscircuit/schematic-autolayout": "^0.0.5",
-    "@tscircuit/soup": "^0.0.39",
     "ava": "^6.1.3",
+    "circuit-json": "^0.0.92",
     "esbuild": "^0.20.2",
     "esbuild-register": "^3.5.0",
     "tsup": "^8.0.2"
@@ -27,7 +27,7 @@
   "peerDependencies": {
     "@tscircuit/manual-edit-events": "*",
     "@tscircuit/schematic-autolayout": "*",
-    "@tscircuit/soup": "*",
+    "circuit-json": "*",
     "@tscircuit/soup-util": "*",
     "zod": "*"
   },

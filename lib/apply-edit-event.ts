@@ -1,9 +1,9 @@
 import type { EditEvent } from "@tscircuit/manual-edit-events"
-import type { AnySoupElement, PcbTraceHint } from "@tscircuit/soup"
+import type { AnyCircuitElement, PcbTraceHint } from "circuit-json"
 import { su } from "@tscircuit/soup-util"
 
 export const applyEditEvent = (
-  soup: AnySoupElement[],
+  soup: AnyCircuitElement[],
   editEvent: EditEvent,
   bc: any
 ) => {
