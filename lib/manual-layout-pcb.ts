@@ -1,8 +1,8 @@
 import { applySelector, transformPCBElements } from "@tscircuit/soup-util"
 import type {
   AnyCircuitElement,
-  PCBComponent,
   AnySourceComponent,
+  PcbComponent,
 } from "circuit-json"
 import {
   type Matrix,
@@ -18,23 +18,21 @@ export const manualLayoutPcb = (
 ) => {
   for (const pcb_position of positions) {
     const selector_matches = applySelector(
-      elements as any,
+      elements,
       pcb_position.selector
     )
     if (selector_matches.length === 0) {
       elements.push({
-        pcb_error_id: bc.getId("pcb_error"),
-        type: "pcb_error",
+        pcb_placement_error_id: bc.getId("pcb_placement_error"),
+        type: "pcb_placement_error",
         message: `No elements found for selector: "${pcb_position.selector}"`,
-        error_type: "pcb_placement_error",
       })
       continue
     } else if (selector_matches.length > 1) {
       elements.push({
-        pcb_error_id: bc.getId("pcb_error"),
-        type: "pcb_error",
+        pcb_placement_error_id: bc.getId("pcb_placement_error"),
+        type: "pcb_placement_error",
         message: `Multiple elements found for selector: "${pcb_position.selector}"`,
-        error_type: "pcb_placement_error",
         // TODO add sources
       })
       continue
@@ -45,14 +43,13 @@ export const manualLayoutPcb = (
       (e) =>
         e.type === "pcb_component" &&
         e.source_component_id === source_component.source_component_id
-    ) as PCBComponent
+    ) as PcbComponent
 
     if (!pcb_component) {
       elements.push({
-        pcb_error_id: bc.getId("pcb_error"),
-        type: "pcb_error",
+        pcb_placement_error_id: bc.getId("pcb_placement_error"),
+        type: "pcb_placement_error",
         message: `No pcb_component found for source component: "${source_component.source_component_id}"`,
-        error_type: "pcb_placement_error",
       })
       continue
     }
