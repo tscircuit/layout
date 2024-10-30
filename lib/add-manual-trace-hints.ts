@@ -1,9 +1,9 @@
-import type { AnySoupElement, PcbTraceHint } from "@tscircuit/soup"
+import type { AnyCircuitElement, PcbTraceHint } from "circuit-json"
 import type { ManualTraceHint } from "./types"
 import { su } from "@tscircuit/soup-util"
 
 export const addManualTraceHints = (
-  soup: AnySoupElement[],
+  soup: AnyCircuitElement[],
   manual_trace_hints: ManualTraceHint[],
   bc: any
 ) => {

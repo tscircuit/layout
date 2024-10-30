@@ -1,6 +1,6 @@
 import { addManualTraceHints } from "./lib/add-manual-trace-hints"
 import { manual_pcb_position, type ManualPcbPosition, type ManualPcbPositionInput } from "./lib/zod"
-import type { PcbRouteHint, AnySoupElement } from "@tscircuit/soup"
+import type { PcbRouteHint, AnyCircuitElement } from "circuit-json"
 import { manualLayoutPcb } from "./lib/manual-layout-pcb"
 import { autoLayoutSchematic } from "./lib/auto-layout-schematic"
 import { z } from "zod"
@@ -50,7 +50,7 @@ export interface LayoutBuilder extends InternalLayoutBuilderProps {
     ext: T
   ) => this & Omit<T, "applyToSoup">
 
-  applyToSoup: (soup: AnySoupElement[], bc: any) => AnySoupElement[]
+  applyToSoup: (soup: AnyCircuitElement[], bc: any) => AnyCircuitElement[]
 }
 
 export const layout = () => {

@@ -1,9 +1,9 @@
 import type { EditEvent } from "@tscircuit/manual-edit-events"
-import type { AnySoupElement } from "@tscircuit/soup"
+import type { AnyCircuitElement } from "circuit-json"
 import { applyEditEvent } from "./apply-edit-event"
 
 export const applyEditEvents = (
-  soup: AnySoupElement[],
+  soup: AnyCircuitElement[],
   editEvents: EditEvent[],
   bc: any
 ) => {

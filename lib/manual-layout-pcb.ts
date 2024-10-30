@@ -1,9 +1,9 @@
 import { applySelector, transformPCBElements } from "@tscircuit/soup-util"
 import type {
-  AnySoupElement,
+  AnyCircuitElement,
   PCBComponent,
   AnySourceComponent,
-} from "@tscircuit/soup"
+} from "circuit-json"
 import {
   type Matrix,
   compose,
@@ -12,7 +12,7 @@ import {
 } from "transformation-matrix"
 
 export const manualLayoutPcb = (
-  elements: AnySoupElement[],
+  elements: AnyCircuitElement[],
   positions: any[],
   bc: any
 ) => {

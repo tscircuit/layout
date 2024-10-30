@@ -1,6 +1,4 @@
-import type { AnySoupElement, SourceTrace } from "@tscircuit/soup"
-import { any_soup_element } from "@tscircuit/soup"
-import { z } from "zod"
+import type { SourceTrace } from "circuit-json"
 import test from "ava"
 
 import { applyEditEvents } from "lib/apply-edit-events"
@@ -379,12 +377,8 @@ const rawSoup = [
   },
 ]
 
-export const twoResistorSoup: AnySoupElement[] = z
-  .array(any_soup_element)
-  .parse(rawSoup)
-
 test("applyEditEvents", (t) => {
-  const soup = JSON.parse(JSON.stringify(twoResistorSoup))
+  const soup = JSON.parse(JSON.stringify(rawSoup))
   applyEditEvents(
     soup,
     [
@@ -412,5 +406,5 @@ test("applyEditEvents", (t) => {
     {} as any
   )
 
-  t.notDeepEqual(soup, twoResistorSoup)
+  t.notDeepEqual(soup, rawSoup)
 })
